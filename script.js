@@ -2,6 +2,7 @@
 console.log("This is a tic tac toe game!")
 let turn = "X"
 let gameOver = false
+let reset = document.getElementById('reset')
 
 // Function to change the turn
 const changeTurn = ()=>{
@@ -46,4 +47,15 @@ Array.from(boxes).forEach(element =>{
             }
         }
     })
+})
+
+// Add on click listener to reset button
+reset.addEventListener('click', ()=>{
+    let boxTexts = document.querySelectorAll('.boxText')
+    Array.from(boxTexts).forEach(element=>{
+        element.innerText = ""
+    })
+    turn = "X"
+    gameOver = false
+        document.getElementsByClassName('info')[0].innerText = "Turn for " + turn
 })

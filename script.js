@@ -1,6 +1,7 @@
 // alert("Click Okay to begin")
 console.log("This is a tic tac toe game!")
 let turn = "X"
+let gameOver = false
 
 // Function to change the turn
 const changeTurn = ()=>{
@@ -9,7 +10,7 @@ const changeTurn = ()=>{
 
 // Function to check if won
 const checkWin = ()=>{
-    let boxTexts = document.getElementsByClassName('boxText')
+    let boxText = document.getElementsByClassName('boxText')
     let wins = [
         [0, 1, 2],
         [3, 4, 5],
@@ -24,6 +25,7 @@ const checkWin = ()=>{
         if((boxText[e[0]].innerText === boxText[e[1]].innerText) && (boxText[e[2]].innerText === boxText[e[1]].innerText) && (boxText[e[0]].innerText !== ""))
         {
             document.querySelector('.info').innerText = boxText[e[0]].innerText + " Won"
+            gameOver = true
         }
     })
 
@@ -38,7 +40,10 @@ Array.from(boxes).forEach(element =>{
             boxText.innerText = turn;
             turn = changeTurn()
             checkWin()
-            document.getElementsByClassName('info')[0].innerText = "Turn for " + turn
+            if(!gameOver){
+                document.getElementsByClassName('info')[0].innerText = "Turn for " + turn
+
+            }
         }
     })
 })

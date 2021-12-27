@@ -27,6 +27,7 @@ const checkWin = ()=>{
         {
             document.querySelector('.info').innerText = boxText[e[0]].innerText + " Won"
             gameOver = true
+            alert(boxText[e[0]].innerText + " Won")
         }
     })
 
